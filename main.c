@@ -52,6 +52,15 @@ void print(const t_tree *tree)
 	printf("%s ", c->key);
 }
 
+void delete(t_tree *tree)
+{
+	struct s_char *c = TREE_ENTRY(tree, struct s_char, tree);
+
+	printf("key: %s\n", c->key);
+	free(c->key);
+	free(c);
+}
+
 int main()
 {
 	struct s_char *tree;
@@ -62,7 +71,9 @@ int main()
 	add_right(tree, create("right"));
 
 	tree_foreach(&(tree->tree), &print);
-	printf("\n");
+	printf("%lu\n", tree_size(&tree->tree));
+
+	remove_child_branch(&tree->tree, &delete);
 
 	return (0);
 }

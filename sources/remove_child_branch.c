@@ -16,8 +16,8 @@ void		remove_child_branch(t_tree *tree, t_tree_deleter deleter)
 		remove_child_branch(tree->right, deleter);
 		if (deleter)
 		{
-			deleter(tree);
 			init_tree(tree);
+			deleter(tree);
 		}
 	}
 }
